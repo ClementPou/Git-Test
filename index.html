@@ -52,19 +52,40 @@
       <h1>Articles</h1>
 
       <!-- search display -->
-
+      <input v-model="searchKey" type="search" id="search" placeholder="Rechercher..." autocomplet="off">
       <!-- cards display -->
 
       <div class="card-cart-container">
         <div class="card-container">
-          <div v-for="product in products" class="card">
+          <div v-for="product in filteredList" class="card">
             <div class="img-container">
               <img v-bind:src="product.img" alt="">
             </div>
             <div class="card-text">
               <h3>{{ product.description }}</h3>
-              <span>{{ product.price }}</span>
+              <span>{{ product.price }}€</span>
             </div>
+
+            <div class="card-icons">
+              <div class="like-container">
+                <input
+                  type="checkbox"
+                  name="checkbox"
+                  v-bind:id="product.id"
+                />
+                <label v-bind:for="product.id">
+                  <i class="fas fa-heart"></i>
+                </label>
+              </div>
+
+              <div class="add-to-cart">
+                <button>
+                  <i class="fas fa-shopping-cart"></i>
+                </button>
+              </div>
+
+            </div>
+
           </div>
         </div>
       </div>

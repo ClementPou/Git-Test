@@ -5,7 +5,11 @@ const products = [
     { id: 3, description: 'iPhone 13', price: 959, img: 'assets/img/iPhone-13.png'},
     { id: 4, description: 'iPhone 13 Mini', price: 859, img: 'assets/img/iPhone-13-Mini.png'},
     { id: 5, description: 'iPhone 12', price: 809, img: 'assets/img/iPhone-12.png'},
-    { id: 6, description: 'iPhone 12 Mini', price: 709, img: 'assets/img/iPhone-12-Mini.png'}
+    { id: 6, description: 'iPhone 12 Mini', price: 709, img: 'assets/img/iPhone-12-Mini.png'},
+    { id: 7, description: 'One plus 9 Pro', price: 919, img: 'assets/img/One-Plus-9-Pro.png'},
+    { id: 8, description: 'One plus 9', price: 719, img: 'assets/img/One-Plus-9.png'},
+    { id: 9, description: 'Samsung Galaxy S21 Ultra', price: 999, img: 'assets/img/Samsung-Galaxy-S21-Ultra.jpg'},
+    { id: 10, description: 'Samsung Galaxy Z Fold 3', price: 1699, img: 'assets/img/Samsung-Galaxy-Z-Fold-3.png'},
   ];
 
 const Home = {
@@ -14,7 +18,18 @@ const Home = {
     data: () => {
         return{
             products,
+            searchKey: '',
         }
+    },
+    computed: {
+        filteredList(){
+            return this.products.filter((product) => {
+                return product.description.toLowerCase().includes(this.searchKey.toLowerCase());
+            })
+        }
+    },
+    methods: {
+
     }
 }
 

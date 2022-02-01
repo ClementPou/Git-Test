@@ -1,4 +1,3 @@
-// data
 const products = [
     { id: 1, description: "iPhone 13 Pro Max", price: 1259, img: 'assets/img/iPhone-13-Pro-Max.png'},
     { id: 2, description: 'iPhone 13 Pro', price: 1159, img: 'assets/img/iPhone-13-Pro.png'},
@@ -32,6 +31,20 @@ const Home = {
         getLikeCookie() {
             let cookieValue = JSON.parse($cookies.get('like'));
             cookieValue == null ? this.liked = [] : this.liked = cookieValue
+        },
+        cartTotalAmount() {
+            let total = 0;
+            for (let item in this.cart) {
+                total = total + (this.cart[item].quantity * this.cart[item].price)
+            }
+            return total;
+        },
+        itemTotalAmount() {
+            let itemTotal = 0;
+            for (let item in this.cart) {
+                itemTotal = itemTotal + (this.cart[item].quantity)
+            }
+            return itemTotal;
         }
     },
     methods: {
